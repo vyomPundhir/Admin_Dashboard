@@ -10,16 +10,17 @@ import Products from './pages/products/Products';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Menu from './components/menu/Menu'
+import Login from './pages/login/Login';
 
 const Layout = ()=>{
   return (
-    <div className='main'>
+    <div className='main bg-[#2a3447] text-white'>
       <Navbar />
-        <div className="container">
-          <div className="menucontainer">
+        <div className="container flex">
+          <div className="menucontainer w-[250px] pt-[5px] pb-[5px] pl-[20px] pr-[20px] border-r-[2px] border-r-solid border-r-[#384256]">
             <Menu />
           </div>
-          <div className="contentcontainer">
+          <div className="contentContainer pt-[5px] pb-[5px] pl-[20px] pr-[20px]">
             <Outlet />
           </div>
         </div>
@@ -32,19 +33,27 @@ const Layout = ()=>{
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <Home/>
-    ),
+    path:"/",
+    element:<Layout />,
+    children:[
+      {
+        path:"/",
+        element:<Home/>,
+      },
+      {
+        path:"/users",
+        element:<Users/>,
+      },
+      {
+        path:"/products",
+        element:<Products/>,
+      },
+    ]
   },
   {
-    path: "users",
-    element: <Users />,
-  },
-  {
-    path: "products",
-    element: <Products />,
-  },
+    path:"/login",
+    element:<Login />,
+  }
 ]);
 
 
