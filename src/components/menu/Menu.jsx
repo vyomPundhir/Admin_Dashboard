@@ -1,38 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {menu} from "../../data"
 
 const Menu = () => {
   return (
     <div className="menu">
-      <div className="item flex flex-col gap-[10px] mb-[20px]">
-        <span className="title text-[12px] font-[200] text-[#ddd] ">MAIN</span>
+      {menu.map((item)=>(
 
-        <Link to="/" className='listItem'>
-          <img src="/home.svg" alt="" />
-          <span className="listItemTitle">Home</span>
-        </Link>
+        <div className="item flex flex-col gap-[10px] mb-[20px]" key={item.id}>
+          <span className="title text-[15px] font-[200] text-[#ddd] ">{item.title}</span>
 
-        <Link to="/" className='listItem'>
-          <img src="/profile.svg" alt="" />
-          <span className="ListItemTitle">Profile</span>
-        </Link>
+          {item.listItems.map((listItem)=>(
+            <Link to="/" className='listItem flex items-center gap-[10px] p-[10px] rounded-[5px] hover:bg-[#384256]' key={listItem.id}>
+              <img src={listItem.icon} alt="" />
+              <span className="listItemTitle">{listItem.title}</span>
+            </Link>
+          ))}
+        </div>
 
-      </div>
-
-      <div className="item flex flex-col gap-[10px] mb-[20px]">
-        <span className="title text-[12px] font-[200] text-[#ddd]">MAIN</span>
-
-        <Link to="/" className='listItem'>
-          <img src="/home.svg" alt="" />
-          <span className="listItemTitle">Home</span>
-        </Link>
-
-        <Link to="/"  className='listItem flex items-center gap-[10px] p-[10px] rounded-[5px]'>
-          <img src="/profile.svg" alt=""/>
-          <span className="ListItemTitle">Profile</span>
-        </Link>
-        
-      </div>
+      ))}      
     </div>
   )
 }
