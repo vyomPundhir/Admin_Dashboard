@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './pages/home/Home'
 import Users from './pages/users/Users';
+import "./styles/index.css";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,7 +21,7 @@ const Layout = ()=>{
           <div className="menucontainer w-[250px] pt-[5px] pb-[5px] pl-[20px] pr-[20px] border-r-[2px] border-r-solid border-r-[#384256]">
             <Menu />
           </div>
-          <div className="contentContainer pt-[5px] pb-[5px] pl-[20px] pr-[20px]">
+          <div className="contentContainer pt-[5px] pb-[5px] pl-[20px] pr-[20px] w-5/6">
             <Outlet />
           </div>
         </div>
