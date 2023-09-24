@@ -11,7 +11,7 @@ const DataTable = () => {
       headerName:"Avatar",
       width:100,
       renderCell: (params) =>{
-        return <img src={params.row.img || "/noavatar.png"} alt="" />
+        return <img className='w-[32px] h-[32px] rounded-fullobject-cover' src={params.row.img || "/noavatar.png"} alt="" />
       }
     },
     {
