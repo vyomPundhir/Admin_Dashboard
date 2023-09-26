@@ -1,15 +1,38 @@
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import React from 'react'
 import "../dataTable/DataTable.css"
+import { Link } from 'react-router-dom'
 
 const DataTable = (props) => {
+
+  const handleDelete = (id) =>{
+    console.log(id+"has been deleted!")
+  }
+
+  const actionColumn = {
+    field:"action",
+    headerName:"Action",
+    width:150,
+    renderCell: (params) => {
+      return (
+        <div className="action flex gpa-[15px]">
+          <Link to={`/${props.slug}/${params.row.id}`}>
+            <img src="/view.svg" alt="" className='w-[20px] h-[20px] cursor-pointer'/>
+          </Link>
+          <div className="delete" onClick={()=>handleDelete(params.row.id)}>
+            <img src="/delete.svg" alt="" />
+          </div>
+        </div>
+      )
+    },
+  }
 
   return (
     <div className='dataTable'>
       <DataGrid
         className='dataGrid bg-[white] p-[20px]'
         rows={props.rows}
-        columns={props.columns}
+        columns={[...props.columns, actionColumn]}
         initialState={{
           pagination: {
             paginationModel: {
