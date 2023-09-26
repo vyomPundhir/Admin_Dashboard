@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DataTable from '../../components/dataTable/DataTable'
 import { userRows } from '../../data';
+import Add from '../../components/add/Add';
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -39,7 +40,7 @@ const columns = [
   {
     field: "createdAt",
     headerName: "Created At",
-    width: 200,
+    width: 120,
     type: "string",
   },
   {
@@ -51,13 +52,21 @@ const columns = [
 ];
 
 const Users = () => {
+
+  const [open, setOpen] = useState(false)
+
   return (
     <div className="users">
-      <div className="info">
-        <h1>Users</h1>
-        <button>Add New User</button>
+      <div className="info flex items-center gap-[20px] mb-[20px]">
+        <h1 className='text-[30px] font-[700]'>Users</h1>
+        {/* <button >Add New User</button> */}
+        <button type="button" className='p-[5px] cursor-pointer rounded-[5px] bg-[#f0f0f0] text-[black] font-[500]'
+        onClick={()=>setOpen(true)}>
+          Add New User
+        </button>
       </div>
-      <DataTable columns={columns} rows={userRows}/>
+      <DataTable slug="users" columns={columns} rows={userRows}/>
+      {open && <Add slug="user" columns={columns} setOpen={setOpen}/>}
     </div>
   )
 }
