@@ -59,7 +59,6 @@ const Users = () => {
     <div className="users">
       <div className="info flex items-center gap-[20px] mb-[20px]">
         <h1 className='text-[30px] font-[700]'>Users</h1>
-        {/* <button >Add New User</button> */}
         <button type="button" className='p-[5px] cursor-pointer rounded-[5px] bg-[#f0f0f0] text-[black] font-[500]'
         onClick={()=>setOpen(true)}>
           Add New User
