@@ -15,12 +15,12 @@ const DataTable = (props) => {
     width:150,
     renderCell: (params) => {
       return (
-        <div className="action flex gpa-[15px]">
+        <div className="action flex gap-[15px]">
           <Link to={`/${props.slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" className='w-[20px] h-[20px] cursor-pointer'/>
           </Link>
           <div className="delete" onClick={()=>handleDelete(params.row.id)}>
-            <img src="/delete.svg" alt="" />
+            <img src="/delete.svg" alt="" className='w-[20px] h-[20px] cursor-pointer'/>
           </div>
         </div>
       )
