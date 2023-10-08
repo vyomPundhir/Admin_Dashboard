@@ -1,6 +1,8 @@
 import React from 'react'
 import Home from './pages/home/Home'
 import Users from './pages/users/Users';
+import User from "./pages/user/User";
+import Product from "./pages/product/Product";
 import "./styles/index.css";
 import {
   createBrowserRouter,
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
       {
         path:"/products",
         element:<Products/>,
+      },
+      {
+        path:"/users/:id",
+        element:<User />,
+      },
+      {
+        path:"/products/:id",
+        element:<Product />,
       },
     ]
   },
