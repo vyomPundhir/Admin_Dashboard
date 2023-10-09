@@ -1,5 +1,6 @@
 import React from 'react'
 import Single from "../../components/single/Single"
+import {singleUser} from "../../data"
 
 const User = () => {
 
@@ -7,7 +8,7 @@ const User = () => {
 
   return (
     <div className="user" >
-      <Single />
+      <Single {...singleUser} />
     </div>
   )
 }
