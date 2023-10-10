@@ -11,7 +11,7 @@ const Menu = () => {
           <span className="title text-[15px] font-[200] text-[#ddd] ">{item.title}</span>
 
           {item.listItems.map((listItem)=>(
-            <Link to="/" className='listItem flex items-center gap-[10px] p-[10px] rounded-[5px] hover:bg-[#384256]' key={listItem.id}>
+            <Link to={listItem.url} className='listItem flex items-center gap-[10px] p-[10px] rounded-[5px] hover:bg-[#384256]' key={listItem.id}>
               <img src={listItem.icon} alt="" />
               <span className="listItemTitle">{listItem.title}</span>
             </Link>
