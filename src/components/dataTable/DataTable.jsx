@@ -2,11 +2,26 @@ import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import React from 'react'
 import "../dataTable/DataTable.css"
 import { Link } from 'react-router-dom'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const DataTable = (props) => {
 
+  const queryClient = useQueryClient();
+  
+  const mutation = useMutation({
+    mutationFn:(id)=>{
+      return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
+        method:"delete",
+      });
+    },
+    onSuccess: ()=>{
+      queryClient.invalidateQueries([`all${props.slug}`])
+    }
+  });
+
   const handleDelete = (id) =>{
-    console.log(id+"has been deleted!")
+    // console.log(id+"has been deleted!")
+    mutation.mutate(id)
   }
 
   const actionColumn = {
