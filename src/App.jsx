@@ -14,6 +14,9 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Menu from './components/menu/Menu'
 import Login from './pages/login/Login';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const Layout = ()=>{
   return (
@@ -24,7 +27,10 @@ const Layout = ()=>{
             <Menu />
           </div>
           <div className="contentContainer pt-[5px] pb-[5px] pl-[20px] pr-[20px] w-5/6">
-            <Outlet />
+            <QueryClientProvider client={queryClient}>
+              <Outlet />
+            </QueryClientProvider>
+            
           </div>
         </div>
       <Footer />
